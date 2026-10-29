@@ -2,6 +2,10 @@
 
 version: '3'
 
+dotenv:
+  - .env
+  - .env.dist
+
 tasks:
 
   default:
@@ -20,17 +24,30 @@ tasks:
 
   build:
     desc: Builds the image
+    deps:
+      - init
+    requires:
+      vars:
+        - IMAGE
+        - TAG
     sources:
       - Dockerfile
     cmds:
-      - img build -t test:latest .
+      - img build -t ${IMAGE}:${TAG} .
 
   run:
     desc: Runs the image
+    deps:
+      - build
+    requires:
+      vars:
+        - IMAGE
+        - TAG
     sources:
       - Dockerfile
     cmds:
-      - docker run --rm -it test:latest
+      - img save ${IMAGE}:${TAG} | docker load
+      - docker run --rm -it ${IMAGE}:${TAG}
 
   test:
     desc: Test the project
