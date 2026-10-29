@@ -18,17 +18,24 @@ tasks:
     cmds:
       - mise install
 
-  run:
+  build:
     desc: Builds the image
     sources:
       - Dockerfile
     cmds:
-      - img build .
+      - img build -t test:latest .
+
+  run:
+    desc: Runs the image
+    sources:
+      - Dockerfile
+    cmds:
+      - docker run --rm -it test:latest
 
   test:
     desc: Test the project
     deps:
-      - init
+      - build
     cmds:
       - echo "Implement me"
       - false
