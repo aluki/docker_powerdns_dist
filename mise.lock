@@ -2,6 +2,21 @@
 
 lockfile_version = 3
 
+[[tools."github:genuinetools/img"]]
+version = "0.5.11"
+backend = "github:genuinetools/img"
+specifiers = ["0"]
+
+[tools."github:genuinetools/img"."platforms.linux-x64"]
+checksum = "sha256:cc9bf08794353ef57b400d32cd1065765253166b0a09fba360d927cfbd158088"
+url = "https://github.com/genuinetools/img/releases/download/v0.5.11/img-linux-amd64"
+url_api = "https://api.github.com/repos/genuinetools/img/releases/assets/28218999"
+
+[tools."github:genuinetools/img"."platforms.linux-x64-musl"]
+checksum = "sha256:cc9bf08794353ef57b400d32cd1065765253166b0a09fba360d927cfbd158088"
+url = "https://github.com/genuinetools/img/releases/download/v0.5.11/img-linux-amd64"
+url_api = "https://api.github.com/repos/genuinetools/img/releases/assets/28218999"
+
 [[tools.task]]
 version = "3.52.0"
 backend = "aqua:go-task/task"
