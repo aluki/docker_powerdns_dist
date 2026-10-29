@@ -1,0 +1,34 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+
+  default:
+    cmds:
+      - task -l
+    silent: true
+
+  init:
+    desc: Initialises the project
+    sources:
+      - mise.toml
+    generates:
+      - mise.lock
+    cmds:
+      - mise install
+
+  run:
+    desc: Builds the image
+    sources:
+      - Dockerfile
+    cmds:
+      - img build .
+
+  test:
+    desc: Test the project
+    deps:
+      - init
+    cmds:
+      - echo "Implement me"
+      - false
